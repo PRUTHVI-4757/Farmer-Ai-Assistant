@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmer AI - Register</title>
+  <link rel="stylesheet" href="registration.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="register-card">
+      <div class="brand">
+        <div class="logo">🌱</div>
+        <h1>Create Account</h1>
+        <p>Register to access your smart farming assistant.</p>
+      </div>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="form-control" placeholder="Enter username" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="Enter email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="Enter password" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile Number</label>
+          <input type="tel" id="mobile" class="form-control" placeholder="Enter mobile number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="district">District</label>
+          <select id="district" class="form-control" required>
+            <option value="">Select District</option>
+            <option value="Ahmednagar">Ahmednagar</option>
+            <option value="Akola">Akola</option>
+            <option value="Amravati">Amravati</option>
+            <option value="Aurangabad">Aurangabad</option>
+            <option value="Beed">Beed</option>
+            <option value="Bhandara">Bhandara</option>
+            <option value="Buldhana">Buldhana</option>
+            <option value="Chandrapur">Chandrapur</option>
+            <option value="Dhule">Dhule</option>
+            <option value="Gadchiroli">Gadchiroli</option>
+            <option value="Gondia">Gondia</option>
+            <option value="Hingoli">Hingoli</option>
+            <option value="Jalgaon">Jalgaon</option>
+            <option value="Jalna">Jalna</option>
+            <option value="Kolhapur">Kolhapur</option>
+            <option value="Latur">Latur</option>
+            <option value="Mumbai City">Mumbai City</option>
+            <option value="Mumbai Suburban">Mumbai Suburban</option>
+            <option value="Nagpur">Nagpur</option>
+            <option value="Nanded">Nanded</option>
+            <option value="Nandurbar">Nandurbar</option>
+            <option value="Nashik">Nashik</option>
+            <option value="Dharashiv">Dharashiv (Osmanabad)</option>
+            <option value="Palghar">Palghar</option>
+            <option value="Parbhani">Parbhani</option>
+            <option value="Pune">Pune</option>
+            <option value="Raigad">Raigad</option>
+            <option value="Ratnagiri">Ratnagiri</option>
+            <option value="Sangli">Sangli</option>
+            <option value="Satara">Satara</option>
+            <option value="Sindhudurg">Sindhudurg</option>
+            <option value="Solapur">Solapur</option>
+            <option value="Thane">Thane</option>
+            <option value="Wardha">Wardha</option>
+            <option value="Washim">Washim</option>
+            <option value="Yavatmal">Yavatmal</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="taluka">Taluka</label>
+          <select id="taluka" class="form-control" required>
+            <option value="">Select Taluka</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit">Register</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const talukaData = {
+      Pune: ["Haveli", "Pune City", "Maval", "Mulshi", "Shirur", "Baramati", "Daund", "Indapur", "Bhor", "Velhe", "Purandar", "Khed", "Junnar", "Ambegaon"],
+      Nashik: ["Nashik", "Igatpuri", "Sinnar", "Dindori", "Niphad", "Chandwad", "Yeola", "Kalwan", "Baglan", "Malegaon"],
+      Nagpur: ["Nagpur Rural", "Hingna", "Katol", "Savner", "Umred", "Mouda", "Kalameshwar", "Bhiwapur"],
+      Thane: ["Thane", "Kalyan", "Bhiwandi", "Murbad", "Shahapur", "Ambarnath"],
+      Kolhapur: ["Karvir", "Panhala", "Shahuwadi", "Kagal", "Hatkanangale", "Shirol", "Radhanagari"],
+      Ahmednagar: ["Ahmednagar", "Shevgaon", "Pathardi", "Parner", "Rahuri", "Shrirampur", "Sangamner", "Akole", "Newasa", "Karjat", "Jamkhed"],
+      Akola: ["Akola", "Barshitakli", "Akot", "Balapur", "Murtijapur", "Patur", "Telhara"],
+      Amravati: ["Amravati", "Achalpur", "Anjangaon Surji", "Chandur Railway", "Chandur Bazar", "Daryapur", "Morshi", "Warud", "Teosa", "Dhamangaon Railway"],
+      Aurangabad: ["Aurangabad", "Paithan", "Kannad", "Sillod", "Vaijapur", "Gangapur", "Khuldabad", "Phulambri"],
+      Beed: ["Beed", "Georai", "Majalgaon", "Parli", "Kaij", "Ambajogai", "Dharur", "Ashti", "Shirur Kasar", "Wadwani", "Patoda"],
+      Bhandara: ["Bhandara", "Tumsar", "Mohadi", "Sakoli", "Lakhani", "Pauni"],
+      Buldhana: ["Buldhana", "Chikhli", "Deulgaon Raja", "Jalgaon Jamod", "Khamgaon", "Malkapur", "Mehkar", "Motala", "Nandura", "Shegaon", "Sindkhed Raja"],
+      Chandrapur: ["Chandrapur", "Ballarpur", "Brahmapuri", "Bhadravati", "Gondpipri", "Jiwati", "Korpana", "Mul", "Nagbhid", "Pombhurna", "Rajura", "Sawali", "Sindewahi", "Warora"],
+      Dhule: ["Dhule", "Sakri", "Shirpur", "Sindkheda"],
+      Gadchiroli: ["Gadchiroli", "Aheri", "Armori", "Bhamragad", "Chamorshi", "Dhanora", "Desaiganj", "Etapalli", "Kurkheda", "Mulchera", "Sironcha"],
+      Gondia: ["Gondia", "Amgaon", "Arjuni Morgaon", "Deori", "Goregaon", "Sadak Arjuni", "Salekasa", "Tirora"],
+      Hingoli: ["Hingoli", "Aundha Nagnath", "Basmath", "Kalamnuri", "Sengaon"],
+      Jalgaon: ["Jalgaon", "Bhusawal", "Chopda", "Erandol", "Jalgoan?", "Jamner", "Muktainagar", "Pachora", "Parola", "Raver", "Yawal", "Amalner", "Bhadgaon", "Dharangaon"],
+      Jalna: ["Jalna", "Ambad", "Badnapur", "Bhokardan", "Ghansawangi", "Mantha", "Partur"],
+      Latur: ["Latur", "Ahmedpur", "Ausa", "Chakur", "Deoni", "Jalkot", "Nilanga", "Renapur", "Shirur Anantpal", "Udgir"],
+      "Mumbai City": ["Mumbai City"],
+      "Mumbai Suburban": ["Andheri", "Borivali", "Kurla", "Bandra", "Dharavi"],
+      Nanded: ["Nanded", "Ardhapur", "Bhokar", "Biloli", "Deglur", "Dharmabad", "Hadgaon", "Himayatnagar", "Kandhar", "Kinwat", "Loha", "Mahur", "Mukhed", "Naigaon", "Umri"],
+      Nandurbar: ["Nandurbar", "Akkalkuwa", "Akrani", "Nawapur", "Shahada", "Taloda"],
+      Dharashiv: ["Dharashiv", "Bhum", "Kalamb", "Lohara", "Omerga", "Paranda", "Tuljapur", "Vashi"],
+      Palghar: ["Palghar", "Vasai", "Dahanu", "Jawhar", "Mokhada", "Talasari", "Vikramgad", "Wada"],
+      Parbhani: ["Parbhani", "Gangakhed", "Jintur", "Manwat", "Palam", "Pathri", "Purna", "Sailu", "Sonpeth"],
+      Raigad: ["Alibag", "Karjat", "Khalapur", "Mahad", "Mangaon", "Mhasla", "Murud", "Panvel", "Pen", "Poladpur", "Roha", "Shrivardhan", "Sudhagad"],
+      Ratnagiri: ["Ratnagiri", "Chiplun", "Dapoli", "Guhagar", "Khed", "Lanja", "Mandangad", "Rajapur", "Sangameshwar"],
+      Sangli: ["Sangli", "Miraj", "Tasgaon", "Khanapur", "Atpadi", "Walwa", "Palus", "Shirala", "Jat"],
+      Satara: ["Satara", "Karad", "Wai", "Koregaon", "Phaltan", "Khatav", "Man", "Mahabaleshwar", "Patan"],
+      Sindhudurg: ["Kankavli", "Malvan", "Vengurla", "Devgad", "Kudal", "Sawantwadi", "Vaibhavwadi", "Dodamarg"],
+      Solapur: ["Solapur North", "Solapur South", "Barshi", "Mohol", "Mangalvedha", "Pandharpur", "Malshiras", "Karmala", "Akkalkot", "Sangola"],
+      Wardha: ["Wardha", "Arvi", "Ashti", "Deoli", "Hinganghat", "Karanja", "Samudrapur"],
+      Washim: ["Washim", "Malegaon", "Mangrulpir", "Risod", "Karanja", "Manora"],
+      Yavatmal: ["Yavatmal", "Arni", "Babulgaon", "Darwha", "Digras", "Ghatanji", "Kalamb", "Mahagaon", "Maregaon", "Ner", "Pusad", "Ralegaon", "Umarkhed", "Wani", "Zari Jamni"]
+    };
+
+    const districtSelect = document.getElementById("district");
+    const talukaSelect = document.getElementById("taluka");
+
+    districtSelect.addEventListener("change", function () {
+      const district = this.value;
+      talukaSelect.innerHTML = '<option value="">Select Taluka</option>';
+      if (talukaData[district]) {
+        talukaData[district].forEach(function (taluka) {
+          const option = document.createElement("option");
+          option.value = taluka;
+          option.textContent = taluka;
+          talukaSelect.appendChild(option);
+        });
+      }
+    });
+
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

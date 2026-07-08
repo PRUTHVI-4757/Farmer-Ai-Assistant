@@ -1,0 +1,223 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: #fff;
+  background:
+    linear-gradient(rgba(8, 20, 18, 0.45), rgba(8, 20, 18, 0.45)),
+    url("feature.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+}
+
+.topbar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.brand h1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.brand p {
+  margin-top: 3px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: 0.3s ease;
+}
+
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.features-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 34px 22px 40px;
+}
+
+.hero-card {
+  padding: 34px 30px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.hero-card h2 {
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.hero-card p {
+  max-width: 860px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.feature-card,
+.bottom-box {
+  padding: 24px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+  transition: 0.3s ease;
+}
+
+.feature-card {
+  min-height: 220px;
+}
+
+.feature-card:hover,
+.bottom-box:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, rgba(91, 140, 255, 0.85), rgba(118, 75, 162, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.feature-card h3,
+.bottom-box h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.feature-card p,
+.bottom-box p {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.bottom-info {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1100px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bottom-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .brand {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-card h2 {
+    font-size: 30px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-page {
+    padding: 26px 14px 34px;
+  }
+
+  .hero-card,
+  .feature-card,
+  .bottom-box {
+    border-radius: 20px;
+  }
+}
