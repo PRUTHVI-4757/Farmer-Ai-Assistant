@@ -212,3 +212,25 @@ body {
     padding: 22px 18px;
   }
 }
+
+.card{
+    text-decoration:none;
+    color:white;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.stat-card{
+    cursor:pointer;
+}
+
+.stat-card:hover{
+    transform:translateY(-4px);
+}
+
+a{
+    color:inherit;
+}
