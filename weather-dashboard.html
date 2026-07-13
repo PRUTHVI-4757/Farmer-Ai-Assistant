@@ -3,237 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Farmer Ai Weather Dashboard</title>
-  
-  <link rel="stylesheet" href="https://unpkg.com/******/dist/leaflet.css" />
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Arial, sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url("weather-dashboard.avif") center/cover no-repeat fixed;
-      color: #fff;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 30px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .brand p {
-      margin-top: 4px;
-      color: rgba(255,255,255,0.82);
-    }
-
-    .logout-btn {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 10px;
-      background: #e74c3c;
-      color: white;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .dashboard {
-      padding: 28px;
-      display: grid;
-      gap: 22px;
-    }
-
-    .panel {
-      background: rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-      padding: 22px;
-    }
-
-    .panel-header p {
-      margin-top: 6px;
-      color: rgba(255,255,255,0.8);
-    }
-
-    #map {
-      width: 100%;
-      height: 400px;
-      border-radius: 12px;
-      margin-top: 15px;
-      z-index: 1;
-    }
-
-    .coords {
-      margin-top: 16px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .coords div {
-      min-width: 180px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .coords span {
-      display: block;
-      color: rgba(255,255,255,0.78);
-    }
-
-    .coords strong {
-      display: block;
-      margin-top: 6px;
-      font-size: 1.05rem;
-    }
-
-    /* Polished 7-column layout */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 14px;
-      width: 100%;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-      padding: 18px 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 165px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .card h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .card p {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .card small {
-      display: block;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    /* Smooth responsive breakpoints */
-    @media (max-width: 1100px) {
-      .cards-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 768px) {
-      .topbar {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-
-      .dashboard {
-        padding: 16px;
-      }
-
-      #map {
-        height: 280px;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-    }
-  </style>
+  <title>Farmer AI Weather Dashboard</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="weather-dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-  <header class="topbar">
-    <div class="brand">
-      <h2>Farmer Ai Weather Tracker</h2>
-      <p>Interactive Forecast System</p>
-    </div>
-    <button class="logout-btn" href="Page1.html">Log Out</button>
-  </header>
-
-  <main class="dashboard">
-    
-    <section class="panel">
-      <div class="panel-header">
-        <h3>Select Location</h3>
-        <p>Click anywhere on the map to view its 7-day weather forecast.</p>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <i></i> 🌱 Farmer AI
       </div>
-      
-      <div id="map"></div>
-      
-      <div class="coords">
-        <div>
-          <span>Latitude</span>
-          <strong id="lat-val">20.5937</strong>
+      <nav class="nav-menu">
+        <a href="Page1.html" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="weather-dashboard.html" class="nav-item active"><i class="fa-solid fa-cloud-sun"></i> Weather</a>
+        <a href="disease-dashboard.html" class="nav-item"><i class="fa-solid fa-qrcode"></i> Disease Detection</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-flask"></i> Fertilizer Guide</a>
+        <a href="./market-dashboard.html" class="nav-item"><i class="fa-solid fa-chart-line"></i> Market Prices</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="Page1.html" class="nav-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="hero-panel glass-card">
+        <div class="hero-content">
+          <h1>Weather Tracker</h1>
+          <p>Click on the map to view a 7-day forecast for that location.</p>
         </div>
-        <div>
-          <span>Longitude</span>
-          <strong id="lng-val">78.9629</strong>
+        <button class="top-action-btn" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+      </section>
+
+      <section class="grid-layout">
+        <div class="glass-card map-panel">
+          <div class="section-heading">
+            <h3>Select Location</h3>
+            <p>Move the marker by clicking anywhere on the map.</p>
+          </div>
+
+          <div id="map"></div>
+
+          <div class="coords">
+            <div class="coord-box">
+              <span>Latitude</span>
+              <strong id="lat-val">20.5937</strong>
+            </div>
+            <div class="coord-box">
+              <span>Longitude</span>
+              <strong id="lng-val">78.9629</strong>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="forecast-section">
-      <h3 style="margin-bottom: 16px; font-size: 1.25rem;">7-Day Forecast</h3>
-      <div class="cards-grid" id="forecast-container">
-        <div class="card"><p>Loading forecast...</p></div>
-      </div>
-    </section>
+        <div class="glass-card info-panel">
+          <div class="section-heading">
+            <h3>Location Summary</h3>
+            <p>Current selected coordinates.</p>
+          </div>
 
-  </main>
+          <div class="summary-list">
+            <div class="summary-row">
+              <span>Selected Latitude</span>
+              <strong id="summary-lat">20.5937</strong>
+            </div>
+            <div class="summary-row">
+              <span>Selected Longitude</span>
+              <strong id="summary-lng">78.9629</strong>
+            </div>
+            <div class="summary-row">
+              <span>Status</span>
+              <strong id="summary-status">Ready</strong>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <script src="********"></script>
-  
+      <section class="forecast-section glass-card">
+        <div class="section-heading">
+          <h3>7-Day Forecast</h3>
+          <p>Live weather forecast from Open-Meteo.</p>
+        </div>
+        <div class="cards-grid" id="forecast-container">
+          <div class="card loading-card"><p>Loading forecast...</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="**********"></script>
   <script>
-    // Initial Map placement defaults
     let defaultLat = 20.5937;
     let defaultLng = 78.9629;
 
     const map = L.map('map').setView([defaultLat, defaultLng], 5);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.****.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
@@ -265,13 +130,14 @@
 
     async function fetchWeather(lat, lng) {
       const container = document.getElementById('forecast-container');
-      container.innerHTML = '<div class="card"><p style="font-size:1rem;">Fetching live data...</p></div>';
+      container.innerHTML = '<div class="card loading-card"><p style="font-size:1rem;">Fetching live data...</p></div>';
+      document.getElementById('summary-status').innerText = 'Loading...';
 
       try {
-        const url = `https://******/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto`;
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto`;
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (!data.daily) throw new Error("Data unavailable");
 
         container.innerHTML = '';
@@ -281,24 +147,28 @@
           const maxTemp = Math.round(data.daily.temperature_2m_max[i]);
           const minTemp = Math.round(data.daily.temperature_2m_min[i]);
           const code = data.daily.weathercode[i];
-          
           const condition = weatherCodes[code] || { text: "Unspecified", emoji: "🌍" };
 
           const cardHTML = `
-            <div class="card">
+            <div class="card forecast-card">
               <h3>${formatDayName(dateStr)}</h3>
               <p>${condition.emoji} ${maxTemp}°C</p>
               <div>
                 <small>Low: ${minTemp}°C</small>
-                <small style="margin-top: 4px; color: rgba(255,255,255,0.55); font-size: 0.75rem;">${condition.text}</small>
+                <small class="condition-text">${condition.text}</small>
               </div>
             </div>
           `;
           container.innerHTML += cardHTML;
         }
 
+        document.getElementById('summary-lat').innerText = Number(lat).toFixed(4);
+        document.getElementById('summary-lng').innerText = Number(lng).toFixed(4);
+        document.getElementById('summary-status').innerText = 'Forecast loaded';
+
       } catch (error) {
-        container.innerHTML = `<div class="card"><p style="color:#e74c3c; font-size:1rem;">Failed to load data.</p></div>`;
+        container.innerHTML = `<div class="card loading-card"><p style="color:#e74c3c; font-size:1rem;">Failed to load data.</p></div>`;
+        document.getElementById('summary-status').innerText = 'Failed to load';
         console.error(error);
       }
     }
@@ -309,6 +179,8 @@
 
       document.getElementById('lat-val').innerText = lat;
       document.getElementById('lng-val').innerText = lng;
+      document.getElementById('summary-lat').innerText = lat;
+      document.getElementById('summary-lng').innerText = lng;
 
       marker.setLatLng(e.latlng);
       fetchWeather(lat, lng);
@@ -316,11 +188,9 @@
 
     fetchWeather(defaultLat, defaultLng);
 
-    // Logout redirection handler
-document.querySelector('.logout-btn').addEventListener('click', function() {
-    window.location.href = 'page1.html'; // Replace 'login.html' with your actual target filename
-});
-
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      window.location.href = 'Page1.html';
+    });
   </script>
 </body>
 </html>
