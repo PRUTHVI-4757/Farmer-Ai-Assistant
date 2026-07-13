@@ -1,0 +1,375 @@
+/* Core Styling Reset & Background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    background: linear-gradient(rgba(14, 34, 22, 0.45), rgba(10, 25, 16, 0.5)), 
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600') no-repeat center center fixed;
+    background-size: cover;
+    color: #f3f4f6;
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* Master Layout Dashboard Structure */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.logo-area {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4ade80;
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0.8rem 1rem;
+    color: #94a3b8;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+
+.nav-item i {
+    width: 20px;
+}
+
+
+.nav-item:hover, .nav-item.active {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+}
+
+
+.nav-item.active {
+    border-left: 3px solid #4ade80;
+    border-radius: 4px 12px 12px 4px;
+}
+
+
+.logout {
+    margin-top: auto;
+}
+
+
+/* Content Panel Elements */
+.main-content {
+    flex: 1;
+    padding: 2.5rem;
+    overflow-y: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+.glass-card {
+    background: rgba(30, 41, 59, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.grid-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* Headers */
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+.header-title h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+
+.header-title p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+
+.btn-back {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* Upload Component Zone */
+.drop-zone {
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.drop-icon {
+    font-size: 2.5rem;
+    color: #94a3b8;
+}
+
+
+.upload-actions {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+
+.btn {
+    padding: 0.65rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+
+.btn-green {
+    background: #22c55e;
+    color: white;
+    border: none;
+}
+
+
+.btn-green:hover {
+    background: #16a34a;
+}
+
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+.file-info {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+
+/* Image Holders */
+.image-holder, .report-image-holder {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+
+.image-holder img, .report-image-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.preview-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+}
+
+
+/* Setup Steps Footer Elements */
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 20px;
+}
+
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+
+.step-icon {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    color: #a3e635;
+}
+
+
+.step h5 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+
+.step p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+
+/* Report Breakdown Details Grid Layout */
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+.report-image-holder {
+    height: 240px;
+    margin: 0;
+}
+
+
+.summary-details h3 {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+
+.table-row span:first-child {
+    color: #94a3b8;
+}
+
+
+.badge {
+    padding: 0.2rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+
+.badge-moderate {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+
+.treatment-list {
+    padding-left: 1.2rem;
+    margin-top: 0.8rem;
+}
+
+
+.treatment-list li {
+    margin-bottom: 0.5rem;
+    color: #e2e8f0;
+}
+
+
+.ai-recommendation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(30, 41, 59, 0.5), rgba(16, 185, 129, 0.1));
+}
+
+
+.ai-rec-content h4 {
+    color: #4ade80;
+    margin-bottom: 5px;
+}
+
+
+.ai-bot-avatar {
+    font-size: 2.5rem;
+    color: #cbd5e1;
+    padding-right: 1rem;
+}
