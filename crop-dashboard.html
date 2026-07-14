@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Dashboard</title>
+  <link rel="stylesheet" href="crop-dashboard.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="container">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <h1>Farmer AI Crop Recommendation</h1>
+            <p>Smart crop recommendation for modern agriculture</p>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="goToPage1()">Logout</button>
+      </header>
+
+      <main class="main-panel">
+        <div class="section-title">Recommendation</div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="season">Season</label>
+            <div class="select-wrap">
+              <select id="season">
+                <option value="" selected disabled>Select season</option>
+                <option value="kharif">Kharif</option>
+                <option value="rabi">Rabi</option>
+                <option value="zaid">Zaid</option>
+                <option value="all-season">All Season</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="area">Farm Area (Acres)</label>
+            <input id="area" type="number" placeholder="e.g. 2.5" step="0.1" min="0" />
+          </div>
+
+          <div class="field">
+            <label for="temperature">Temperature (°C)</label>
+            <input id="temperature" type="number" placeholder="e.g. 28" step="0.1" />
+          </div>
+
+          <div class="field">
+            <label for="rainfall">Rainfall (mm)</label>
+            <input id="rainfall" type="number" placeholder="e.g. 450" step="0.1" />
+          </div>
+
+          <div class="field full">
+            <div class="actions">
+              <button class="recommend-btn" onclick="getRecommendation()">Recommend</button>
+              <button class="secondary-btn" onclick="clearForm()">Clear</button>
+            </div>
+            <div class="status" id="status"></div>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-card">
+            <h3>Best Crop</h3>
+            <div class="value" id="bestCrop">—</div>
+            <div class="desc" id="cropDesc">Recommendation will appear here after API response.</div>
+          </div>
+
+          <div class="result-card">
+            <h3>Estimated Yield</h3>
+            <div class="value" id="estimatedYield">—</div>
+            <div class="desc">Expected output based on current field conditions.</div>
+          </div>
+
+          <div class="result-card">
+            <h3>Planting Season</h3>
+            <div class="value" id="plantingSeason">—</div>
+            <div class="desc">Suggested sowing period for the recommended crop.</div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "PASTE_YOUR_API_URL_HERE";
+
+    async function getRecommendation() {
+      const season = document.getElementById("season").value;
+      const area = document.getElementById("area").value;
+      const temperature = document.getElementById("temperature").value;
+      const rainfall = document.getElementById("rainfall").value;
+      const status = document.getElementById("status");
+
+      if (!season || !area || !temperature || !rainfall) {
+        status.textContent = "Please fill all fields before requesting a recommendation.";
+        return;
+      }
+
+      status.textContent = "Fetching recommendation...";
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            season,
+            area: Number(area),
+            temperature: Number(temperature),
+            rainfall: Number(rainfall)
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("API request failed");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("bestCrop").textContent = data.best_crop || "N/A";
+        document.getElementById("estimatedYield").textContent = data.estimated_yield || "N/A";
+        document.getElementById("plantingSeason").textContent = data.planting_season || "N/A";
+        document.getElementById("cropDesc").textContent =
+          data.description || "Your crop recommendation has been loaded successfully.";
+
+        status.textContent = "Recommendation loaded successfully.";
+      } catch (error) {
+        status.textContent = "Failed to fetch recommendation. Check API URL and response format.";
+        console.error(error);
+      }
+    }
+
+    function clearForm() {
+      document.getElementById("season").value = "";
+      document.getElementById("area").value = "";
+      document.getElementById("temperature").value = "";
+      document.getElementById("rainfall").value = "";
+      document.getElementById("bestCrop").textContent = "—";
+      document.getElementById("estimatedYield").textContent = "—";
+      document.getElementById("plantingSeason").textContent = "—";
+      document.getElementById("cropDesc").textContent = "Recommendation will appear here after API response.";
+      document.getElementById("status").textContent = "";
+    }
+
+    function goToPage1() {
+      window.location.href = "page1.html";
+    }
+  </script>
+</body>
+</html>
