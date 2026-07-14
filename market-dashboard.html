@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crop Market Price Dashboard</title>
+    <link rel="stylesheet" href="market-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i></i> 🌱 Farmer AI
+            </div>
+            <nav class="nav-menu">
+                <a href="Page1.html" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="weather-dashboard.html" class="nav-item"><i class="fa-solid fa-cloud-sun"></i> Weather</a>
+                <a href="disease-dashboard.html" class="nav-item"><i class="fa-solid fa-qrcode"></i> Disease Detection</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-flask"></i> Fertilizer Guide</a>
+                <a href="./market-dashboard.html" class="nav-item"><i class="fa-solid fa-chart-line"></i> Market Prices</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+                <a href="Page1.html" class="nav-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="view-section">
+                <header class="view-header">
+                    <div class="header-title">
+                        <h2><i class="fa-solid fa-chart-line" style="color: #a3e635;"></i> Market Prices</h2>
+                        <p>Track live crop prices from market data API</p>
+                    </div>
+                </header>
+
+                <div class="card glass-card search-card">
+                    <h3><i class="fa-solid fa-filter"></i> Search Market Prices</h3>
+                    <div class="filter-grid">
+                        <div class="filter-group">
+                            <label>Crop</label>
+                            <select id="crop-select">
+                                <optgroup label="Food Crops">
+                                    <option value="Rice">Rice</option>
+                                    <option value="Wheat">Wheat</option>
+                                    <option value="Maize">Maize</option>
+                                    <option value="Barley">Barley</option>
+                                    <option value="Millet">Millet</option>
+                                    <option value="Sorghum">Sorghum</option>
+                                    <option value="Pearl Millet">Pearl Millet</option>
+                                    <option value="Finger Millet">Finger Millet</option>
+                                    <option value="Pulses">Pulses</option>
+                                    <option value="Lentil">Lentil</option>
+                                    <option value="Chickpea">Chickpea</option>
+                                    <option value="Pigeon Pea">Pigeon Pea</option>
+                                    <option value="Moong">Moong</option>
+                                    <option value="Urad">Urad</option>
+                                </optgroup>
+                                <optgroup label="Cash Crops">
+                                    <option value="Cotton">Cotton</option>
+                                    <option value="Sugarcane">Sugarcane</option>
+                                    <option value="Jute">Jute</option>
+                                    <option value="Tobacco">Tobacco</option>
+                                    <option value="Groundnut">Groundnut</option>
+                                    <option value="Soybean">Soybean</option>
+                                    <option value="Sunflower">Sunflower</option>
+                                    <option value="Sesame">Sesame</option>
+                                    <option value="Mustard">Mustard</option>
+                                    <option value="Castor">Castor</option>
+                                </optgroup>
+                                <optgroup label="Plantation Crops">
+                                    <option value="Tea">Tea</option>
+                                    <option value="Coffee">Coffee</option>
+                                    <option value="Coconut">Coconut</option>
+                                    <option value="Rubber">Rubber</option>
+                                    <option value="Arecanut">Arecanut</option>
+                                    <option value="Cashew">Cashew</option>
+                                    <option value="Cocoa">Cocoa</option>
+                                </optgroup>
+                                <optgroup label="Vegetables">
+                                    <option value="Tomato">Tomato</option>
+                                    <option value="Onion">Onion</option>
+                                    <option value="Potato">Potato</option>
+                                    <option value="Brinjal">Brinjal</option>
+                                    <option value="Chilli">Chilli</option>
+                                    <option value="Cabbage">Cabbage</option>
+                                    <option value="Cauliflower">Cauliflower</option>
+                                    <option value="Okra">Okra</option>
+                                    <option value="Carrot">Carrot</option>
+                                    <option value="Cucumber">Cucumber</option>
+                                </optgroup>
+                                <optgroup label="Fruits">
+                                    <option value="Mango">Mango</option>
+                                    <option value="Banana">Banana</option>
+                                    <option value="Apple">Apple</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Grapes">Grapes</option>
+                                    <option value="Pomegranate">Pomegranate</option>
+                                    <option value="Papaya">Papaya</option>
+                                    <option value="Guava">Guava</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>State</label>
+                            <select id="state-select">
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Punjab">Punjab</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Market</label>
+                            <input type="text" id="market-input" placeholder="Enter mandi / market name">
+                        </div>
+
+                        <div class="filter-group button-group">
+                            <label>&nbsp;</label>
+                            <button class="btn btn-green" id="btn-search">
+                                <i class="fa-solid fa-magnifying-glass"></i> Get Prices
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-two-col">
+                    <div class="card glass-card price-card">
+                        <h3>Current Price</h3>
+                        <div class="price-main">
+                            <span class="price-value" id="res-price">₹ --</span>
+                            <span class="price-unit">per quintal</span>
+                        </div>
+                        <div class="price-meta">
+                            <div class="table-row"><span>Crop</span><strong id="res-crop">Tomato</strong></div>
+                            <div class="table-row"><span>State</span><strong id="res-state">Maharashtra</strong></div>
+                            <div class="table-row"><span>Market</span><strong id="res-market">Pune</strong></div>
+                            <div class="table-row"><span>Updated</span><strong id="res-updated">--</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card chart-card">
+                        <h3>Price Trend</h3>
+                        <div class="chart-placeholder">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <p>Trend chart can be added here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-two-col">
+                    <div class="card glass-card">
+                        <h3>Market Details</h3>
+                        <div class="table-row"><span>Minimum Price</span><strong id="res-min">₹ --</strong></div>
+                        <div class="table-row"><span>Maximum Price</span><strong id="res-max">₹ --</strong></div>
+                        <div class="table-row"><span>Modal Price</span><strong id="res-modal">₹ --</strong></div>
+                        <div class="table-row"><span>Unit</span><strong>Quintal</strong></div>
+                    </div>
+
+                    <div class="card glass-card">
+                        <h3>Price Insight</h3>
+                        <p class="api-note">Use your JavaScript API call to load live market values, then fill these fields automatically.</p>
+                        <div class="mini-stats">
+                            <div class="mini-stat">
+                                <span class="mini-label">Demand</span>
+                                <strong>High</strong>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="mini-label">Supply</span>
+                                <strong>Moderate</strong>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="mini-label">Trend</span>
+                                <strong>Rising</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const btnSearch = document.getElementById('btn-search');
+        btnSearch.addEventListener('click', () => {
+            const crop = document.getElementById('crop-select').value;
+            const state = document.getElementById('state-select').value;
+            const market = document.getElementById('market-input').value || 'Pune';
+
+            document.getElementById('res-crop').innerText = crop;
+            document.getElementById('res-state').innerText = state;
+            document.getElementById('res-market').innerText = market;
+            document.getElementById('res-price').innerText = '₹ --';
+            document.getElementById('res-min').innerText = '₹ --';
+            document.getElementById('res-max').innerText = '₹ --';
+            document.getElementById('res-modal').innerText = '₹ --';
+            document.getElementById('res-updated').innerText = 'API response pending';
+        });
+    </script>
+</body>
+</html>
