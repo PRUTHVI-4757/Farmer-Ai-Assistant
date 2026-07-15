@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+
+    <link rel="stylesheet" href="profile.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="profile-card">
+
+        <a href="dashboard.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+
+        <div class="profile-header">
+
+            <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h2>My Profile</h2>
+
+        </div>
+
+        <div class="profile-info">
+
+            <div class="info-box">
+                <label>Username</label>
+                <p id="username"></p>
+            </div>
+
+            <div class="info-box">
+                <label>Email</label>
+                <p id="email"></p>
+            </div>
+
+            <div class="info-box">
+                <label>Mobile Number</label>
+                <p id="mobile"></p>
+            </div>
+
+            <div class="info-box">
+                <label>District</label>
+                <p id="district"></p>
+            </div>
+
+            <div class="info-box">
+                <label>Taluka</label>
+                <p id="taluka"></p>
+            </div>
+
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+<script>
+
+const username = localStorage.getItem("username");
+
+fetch("http://127.0.0.1:5000/profile/" + username)
+.then(response => response.json())
+.then(data => {
+
+    document.getElementById("username").textContent = data.username;
+    document.getElementById("email").textContent = data.email;
+    document.getElementById("mobile").textContent = data.mobileno;
+    document.getElementById("district").textContent = data.district;
+    document.getElementById("taluka").textContent = data.taluka;
+
+});
+
+</script>
+
+</body>
+
+</html>
