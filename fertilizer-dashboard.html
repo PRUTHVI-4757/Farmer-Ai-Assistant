@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmer AI - Fertilizer Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="fertilizer-dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">🌱</div>
+        <span>Farmer AI</span>
+      </div>
+
+      <nav class="nav">
+        <a href="Page1.html" class="nav-item">
+          <i class="fa-solid fa-house"></i><span>Home</span>
+        </a>
+        <a href="weather-dashboard.html" class="nav-item">
+          <i class="fa-solid fa-cloud-sun"></i><span>Weather</span>
+        </a>
+        <a href="disease-detection.html" class="nav-item">
+          <i class="fa-solid fa-virus"></i><span>Disease Detection</span>
+        </a>
+        <a href="ai-assistant.html" class="nav-item">
+          <i class="fa-solid fa-robot"></i><span>AI Assistant</span>
+        </a>
+        <a href="fertilizer-dashboard.html" class="nav-item active">
+          <i class="fa-solid fa-seedling"></i><span>Fertilizer Guide</span>
+        </a>
+        <a href="market-dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i><span>Market Prices</span>
+        </a>
+      </nav>
+
+      <a href="Page1.html" class="logout">
+        <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+      </a>
+    </aside>
+
+    <main class="main">
+      <header class="page-header">
+        <div>
+          <h1><span class="title-icon">🌿</span> Fertilizer Guide</h1>
+          <p>Get smart fertilizer recommendations based on your crop, soil, growth stage, and current conditions.</p>
+        </div>
+      </header>
+
+      <section class="content-grid">
+        <article class="glass-card form-card">
+          <h2>🌱 Farm & Soil Information</h2>
+
+          <form id="fertilizerForm" class="farm-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="crop">Crop</label>
+                <input list="cropList" id="crop" name="crop" placeholder="Search crop..." required />
+                <datalist id="cropList">
+                  <option value="Wheat"></option>
+                  <option value="Rice"></option>
+                  <option value="Maize"></option>
+                  <option value="Jowar"></option>
+                  <option value="Bajra"></option>
+                  <option value="Ragi"></option>
+                  <option value="Chickpea"></option>
+                  <option value="Pigeon Pea"></option>
+                  <option value="Green Gram"></option>
+                  <option value="Black Gram"></option>
+                  <option value="Soybean"></option>
+                  <option value="Groundnut"></option>
+                  <option value="Mustard"></option>
+                  <option value="Sunflower"></option>
+                  <option value="Cotton"></option>
+                  <option value="Sugarcane"></option>
+                  <option value="Potato"></option>
+                  <option value="Tomato"></option>
+                  <option value="Onion"></option>
+                  <option value="Chilli"></option>
+                  <option value="Brinjal"></option>
+                  <option value="Okra"></option>
+                  <option value="Cabbage"></option>
+                  <option value="Cauliflower"></option>
+                  <option value="Mango"></option>
+                  <option value="Banana"></option>
+                  <option value="Grapes"></option>
+                  <option value="Pomegranate"></option>
+                  <option value="Turmeric"></option>
+                  <option value="Ginger"></option>
+                  <option value="Garlic"></option>
+                </datalist>
+              </div>
+
+              <div class="field">
+                <label for="season">Season</label>
+                <select id="season" required>
+                  <option value="">Select season</option>
+                  <option>Kharif</option>
+                  <option>Rabi</option>
+                  <option>Zaid</option>
+                  <option>Annual</option>
+                  <option>Perennial</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="growthStage">Growth Stage</label>
+                <select id="growthStage" required>
+                  <option value="">Select growth stage</option>
+                  <option>Seedling</option>
+                  <option>Vegetative</option>
+                  <option>Flowering</option>
+                  <option>Fruit Development</option>
+                  <option>Maturity</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="soilType">Soil Type</label>
+                <select id="soilType" required>
+                  <option value="">Select soil type</option>
+                  <option>Black</option>
+                  <option>Red</option>
+                  <option>Alluvial</option>
+                  <option>Clay</option>
+                  <option>Sandy</option>
+                  <option>Loamy</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="nutrient-box">
+              <h3>Soil Nutrients</h3>
+              <div class="nutrient-grid">
+                <div class="nutrient-item">
+                  <label for="nitrogenLevel">Nitrogen (N)</label>
+                  <div class="nutrient-row">
+                    <select id="nitrogenLevel" required>
+                      <option value="">Level</option>
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                    </select>
+                    <input id="nitrogenValue" type="number" placeholder="Value (optional)" />
+                  </div>
+                </div>
+
+                <div class="nutrient-item">
+                  <label for="phosphorusLevel">Phosphorus (P)</label>
+                  <div class="nutrient-row">
+                    <select id="phosphorusLevel" required>
+                      <option value="">Level</option>
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                    </select>
+                    <input id="phosphorusValue" type="number" placeholder="Value (optional)" />
+                  </div>
+                </div>
+
+                <div class="nutrient-item">
+                  <label for="potassiumLevel">Potassium (K)</label>
+                  <div class="nutrient-row">
+                    <select id="potassiumLevel" required>
+                      <option value="">Level</option>
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                    </select>
+                    <input id="potassiumValue" type="number" placeholder="Value (optional)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ph">Soil pH</label>
+              <input id="ph" type="number" min="0" max="14" step="0.1" value="6.5" required />
+            </div>
+
+            <div class="upload-box">
+              <label for="soilReport">Upload Soil Test Report</label>
+              <input type="file" id="soilReport" accept=".pdf,.jpg,.jpeg,.png" />
+              <p id="fileName">No file selected</p>
+            </div>
+
+            <button type="submit" class="primary-btn" id="submitBtn">🌱 Get Fertilizer Advice</button>
+            <div id="messageBox" class="message-box" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <article class="glass-card result-card">
+          <h2>🤖 AI Fertilizer Recommendation</h2>
+
+          <div id="emptyState" class="empty-state">
+            <div class="emoji">🌱</div>
+            <p>Enter your crop and soil information to receive a smart fertilizer recommendation.</p>
+          </div>
+
+          <div id="loadingState" class="loading-state hidden">
+            <div class="spinner"></div>
+            <p>Analyzing Farm Data...</p>
+          </div>
+
+          <div id="resultState" class="result-state hidden">
+            <div class="result-badge" id="confidenceScore">Confidence: --</div>
+
+            <div class="result-list">
+              <div class="result-item"><span>Crop</span><strong id="outCrop">--</strong></div>
+              <div class="result-item"><span>Soil Summary</span><strong id="outSoilSummary">--</strong></div>
+              <div class="result-item"><span>Nitrogen Status</span><strong id="outN">--</strong></div>
+              <div class="result-item"><span>Phosphorus Status</span><strong id="outP">--</strong></div>
+              <div class="result-item"><span>Potassium Status</span><strong id="outK">--</strong></div>
+              <div class="result-item"><span>Soil pH</span><strong id="outPh">--</strong></div>
+              <div class="result-item highlight"><span>Recommended Fertilizer</span><strong id="outFertilizer">--</strong></div>
+              <div class="result-item"><span>Application Advice</span><strong id="outAdvice">--</strong></div>
+              <div class="result-item"><span>Weather Advisory</span><strong id="outWeather">--</strong></div>
+              <div class="result-item"><span>Last Updated</span><strong id="outUpdated">--</strong></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="glass-card how-card">
+        <h2>How it works?</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">🌱</div>
+            <div>
+              <h3>Enter Farm Data</h3>
+              <p>Select your crop and enter soil information.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-icon">🤖</div>
+            <div>
+              <h3>AI Analysis</h3>
+              <p>The Python ML model analyzes the submitted farm data.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-icon">🧪</div>
+            <div>
+              <h3>Get Fertilizer Advice</h3>
+              <p>Receive the fertilizer recommendation from the backend.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="fertilizer-dashboard.js"></script>
+</body>
+</html>
