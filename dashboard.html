@@ -1,91 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Farmer AI Dashboard</title>
+
     <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
 
-<header class="topbar">
-    <div class="brand">
-        <div class="logo">🌱</div>
-        <div>
-            <h1>Farmer AI Assistant</h1>
-            <p>Smart tools for modern agriculture</p>
-        </div>
-    </div>
+    <!-- TOP NAVIGATION BAR -->
 
-    <div class="topbar-actions">
-        <a href="profile.html" class="profile-link">
-            <img src="https://cdn-icons-png.flaticon.com/512/9203/9203764.png" alt="Profile" class="profile-img">
+    <header class="topbar">
+
+        <a href="dashboard.html" class="brand">
+
+            <div class="logo">
+                🌱
+            </div>
+
+            <div class="brand-content">
+
+                <h1>Farmer AI Assistant</h1>
+
+                <p>Smart tools for modern agriculture</p>
+
+            </div>
+
         </a>
-        <a href="Page1.html" class="logout">Logout</a>
-    </div>
-</header>
 
-<main class="dashboard">
-    <section class="stats">
-        <div class="stat-card">
-            <h3>🌦 Weather</h3>
-            <p>Live forecast ready</p>
+
+        <div class="topbar-actions">
+
+            <a href="profile.html" class="profile-link">
+
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/9203/9203764.png"
+                    alt="Profile"
+                    class="profile-img"
+                >
+
+            </a>
+
+
+            <a href="Page1.html" class="logout">
+                Logout
+            </a>
+
         </div>
 
-        <div class="stat-card">
-            <h3>🌱 Crops</h3>
-            <p>Smart recommendations</p>
-        </div>
+    </header>
 
-        <div class="stat-card">
-            <h3>🩺 Health</h3>
-            <p>Disease detection</p>
-        </div>
-    </section>
 
-    <section class="features">
-        <h2>Our Features</h2>
+    <!-- MAIN DASHBOARD -->
 
-        <div class="cards">
-            <a href="weather-dashboard.html" class="card">
-                <div class="icon">🌦</div>
-                <h3>Weather Dashboard</h3>
-                <p>Live weather forecast and rainfall prediction.</p>
-            </a>
+    <main class="dashboard">
 
-            <a href="crop-dashboard.html" class="card">
-                <div class="icon">🌱</div>
-                <h3>Crop Recommendation</h3>
-                <p>Suggests the best crop according to soil and season.</p>
-            </a>
+        <section class="features">
 
-            <a href="assistant.html" class="card">
-                <div class="icon">🤖</div>
-                <h3>AI Assistant</h3>
-                <p>Ask farming related questions using AI.</p>
-            </a>
+            <div class="section-header">
 
-            <a href="disease-dashboard.html" class="card">
-                <div class="icon">🦠</div>
-                <h3>Disease Detection</h3>
-                <p>Upload crop image and detect disease.</p>
-            </a>
+                <h2>Farm Management Tools</h2>
 
-            <a href="fertilizer.html" class="card">
-                <div class="icon">💊</div>
-                <h3>Fertilizer Guide</h3>
-                <p>Get fertilizer recommendations for better yield.</p>
-            </a>
+                <p>
+                    Tools to help you make better farming decisions
+                </p>
 
-            <a href="market-dashboard.html" class="card">
-                <div class="icon">📈</div>
-                <h3>Market Prices</h3>
-                <p>View today's crop market prices.</p>
-            </a>
-        </div>
-    </section>
-</main>
+            </div>
+
+
+            <div class="cards">
+
+
+                <!-- WEATHER DASHBOARD -->
+
+                <a href="weather-dashboard.html" class="card">
+
+                    <div class="card-header">
+
+                        <div class="icon">
+                            🌦
+                        </div>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Weather Dashboard
+                    </h3>
+
+                    <p>
+                        Monitor current weather conditions,
+                        forecasts, and rainfall predictions.
+                    </p>
+
+                    <span class="card-link">
+                        Open Dashboard →
+                    </span>
+
+                </a>
+
+
+                <!-- CROP RECOMMENDATION -->
+
+                <a href="crop-dashboard.html" class="card">
+
+                    <div class="card-header">
+
+                        <div class="icon">
+                            🌱
+                        </div>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Crop Recommendation
+                    </h3>
+
+                    <p>
+                        Find suitable crops according to
+                        soil and farming conditions.
+                    </p>
+
+                    <span class="card-link">
+                        Get Recommendations →
+                    </span>
+
+                </a>
+
+
+                <!-- AI ASSISTANT -->
+
+                <a href="assistant.html" class="card">
+
+                    <div class="card-header">
+
+                        <div class="icon">
+                            🤖
+                        </div>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        AI Assistant
+                    </h3>
+
+                    <p>
+                        Get answers and guidance for your
+                        farming-related questions.
+                    </p>
+
+                    <span class="card-link">
+                        Ask Assistant →
+                    </span>
+
+                </a>
+
+
+                <!-- DISEASE DETECTION -->
+
+                <a href="disease-dashboard.html" class="card">
+
+                    <div class="card-header">
+
+                        <div class="icon">
+                            🦠
+                        </div>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Disease Detection
+                    </h3>
+
+                    <p>
+                        Upload crop images and identify
+                        possible plant diseases.
+                    </p>
+
+                    <span class="card-link">
+                        Detect Disease →
+                    </span>
+
+                </a>
+
+
+                <!-- FERTILIZER GUIDE -->
+
+                <a href="fertilizer-dashboard.html" class="card">
+
+                    <div class="card-header">
+
+                        <div class="icon">
+                            💊
+                        </div>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Fertilizer Guide
+                    </h3>
+
+                    <p>
+                        Get fertilizer guidance for healthier
+                        crops and better productivity.
+                    </p>
+
+                    <span class="card-link">
+                        View Guide →
+                    </span>
+
+                </a>
+
+
+                <!-- MARKET PRICES -->
+
+                <a href="market-dashboard.html" class="card">
+
+                    <div class="card-header">
+
+                        <div class="icon">
+                            📈
+                        </div>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Market Prices
+                    </h3>
+
+                    <p>
+                        Check crop market prices and make
+                        better selling decisions.
+                    </p>
+
+                    <span class="card-link">
+                        View Prices →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NAVIGATION SCRIPT -->
+
+    <script>
+
+        document.querySelectorAll(".card").forEach(function(card) {
+
+            card.addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                const destination = this.getAttribute("href");
+
+                if (destination) {
+
+                    window.location.href = destination;
+
+                }
+
+            });
+
+        });
+
+
+        document
+            .querySelector(".profile-link")
+            .addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                window.location.href = "profile.html";
+
+            });
+
+
+        document
+            .querySelector(".logout")
+            .addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                const confirmLogout =
+                    confirm("Are you sure you want to logout?");
+
+                if (confirmLogout) {
+
+                    window.location.href = "Page1.html";
+
+                }
+
+            });
+
+    </script>
 
 </body>
+
 </html>
