@@ -18,10 +18,12 @@
         <a href="Page1.html" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
         <a href="weather-dashboard.html" class="nav-item active"><i class="fa-solid fa-cloud-sun"></i> Weather</a>
         <a href="disease-dashboard.html" class="nav-item"><i class="fa-solid fa-qrcode"></i> Disease Detection</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-robot"></i> AI Assistant</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-flask"></i> Fertilizer Guide</a>
-        <a href="./market-dashboard.html" class="nav-item"><i class="fa-solid fa-chart-line"></i> Market Prices</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="ai-assistant.html" class="nav-item"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+        <a href="fertilizer-dashboard.html" class="nav-item"><i class="fa-solid fa-flask"></i> Fertilizer Guide</a>
+        <a href="market-dashboard.html" class="nav-item"><i class="fa-solid fa-chart-line"></i> Market Prices</a>
+           <a href="crop-dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i><span>Crop Recommendations</span>
+        </a>
         <a href="Page1.html" class="nav-item logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
       </nav>
     </aside>
@@ -91,14 +93,14 @@
     </main>
   </div>
 
-  <script src="**********"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     let defaultLat = 20.5937;
     let defaultLng = 78.9629;
 
     const map = L.map('map').setView([defaultLat, defaultLng], 5);
 
-    L.tileLayer('https://{s}.****.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
