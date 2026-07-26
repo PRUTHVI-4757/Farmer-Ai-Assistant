@@ -1,154 +1,834 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Dashboard</title>
-  <link rel="stylesheet" href="crop-dashboard.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Crop Recommendation Dashboard</title>
+
+    <link rel="stylesheet" href="crop-dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <div class="app">
-    <div class="container">
-      <header class="topbar">
-        <div class="brand">
-          <div class="brand-icon">🌱</div>
-          <div>
-            <h1>Farmer AI Crop Recommendation</h1>
-            <p>Smart crop recommendation for modern agriculture</p>
-          </div>
-        </div>
-        <button class="logout-btn" onclick="goToPage1()">Logout</button>
-      </header>
 
-      <main class="main-panel">
-        <div class="section-title">Recommendation</div>
+    <div class="dashboard-container">
 
-        <div class="form-grid">
-          <div class="field">
-            <label for="season">Season</label>
-            <div class="select-wrap">
-              <select id="season">
-                <option value="" selected disabled>Select season</option>
-                <option value="kharif">Kharif</option>
-                <option value="rabi">Rabi</option>
-                <option value="zaid">Zaid</option>
-                <option value="all-season">All Season</option>
-              </select>
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+
+            <div class="logo-area">
+
+                <i></i> 🌱 Farmer AI
+
             </div>
-          </div>
 
-          <div class="field">
-            <label for="area">Farm Area (Acres)</label>
-            <input id="area" type="number" placeholder="e.g. 2.5" step="0.1" min="0" />
-          </div>
 
-          <div class="field">
-            <label for="temperature">Temperature (°C)</label>
-            <input id="temperature" type="number" placeholder="e.g. 28" step="0.1" />
-          </div>
+            <nav class="nav-menu">
 
-          <div class="field">
-            <label for="rainfall">Rainfall (mm)</label>
-            <input id="rainfall" type="number" placeholder="e.g. 450" step="0.1" />
-          </div>
 
-          <div class="field full">
-            <div class="actions">
-              <button class="recommend-btn" onclick="getRecommendation()">Recommend</button>
-              <button class="secondary-btn" onclick="clearForm()">Clear</button>
-            </div>
-            <div class="status" id="status"></div>
-          </div>
-        </div>
+                <a href="Page1.html" class="nav-item">
 
-        <div class="result-grid">
-          <div class="result-card">
-            <h3>Best Crop</h3>
-            <div class="value" id="bestCrop">—</div>
-            <div class="desc" id="cropDesc">Recommendation will appear here after API response.</div>
-          </div>
+                    <i class="fa-solid fa-house"></i>
 
-          <div class="result-card">
-            <h3>Estimated Yield</h3>
-            <div class="value" id="estimatedYield">—</div>
-            <div class="desc">Expected output based on current field conditions.</div>
-          </div>
+                    Home
 
-          <div class="result-card">
-            <h3>Planting Season</h3>
-            <div class="value" id="plantingSeason">—</div>
-            <div class="desc">Suggested sowing period for the recommended crop.</div>
-          </div>
-        </div>
-      </main>
+                </a>
+
+
+                <a href="weather-dashboard.html" class="nav-item">
+
+                    <i class="fa-solid fa-cloud-sun"></i>
+
+                    Weather
+
+                </a>
+
+
+                <a href="disease-dashboard.html" class="nav-item">
+
+                    <i class="fa-solid fa-qrcode"></i>
+
+                    Disease Detection
+
+                </a>
+
+
+                <a href="#" class="nav-item">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    AI Assistant
+
+                </a>
+
+
+                <a href="fertilizer-dashboard.html" class="nav-item">
+
+                    <i class="fa-solid fa-flask"></i>
+
+                    Fertilizer Guide
+
+                </a>
+
+
+                <a href="market-dashboard.html" class="nav-item">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Market Prices
+
+                </a>
+
+
+                <!-- ACTIVE CROP PAGE -->
+
+                <a href="crop-dashboard.html" class="nav-item active">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                    Crop Recommendations
+
+                </a>
+
+
+                <a href="Page1.html" class="nav-item logout">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+
+            </nav>
+
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+
+            <section class="view-section">
+
+
+                <!-- HEADER -->
+
+                <header class="view-header">
+
+                    <div class="header-title">
+
+                        <h2>
+
+                            <i class="fa-solid fa-seedling"></i>
+
+                            Crop Recommendation
+
+                        </h2>
+
+
+                        <p>
+
+                            Get smart crop recommendations based on your farm conditions
+
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <!-- ================= FORM CARD ================= -->
+
+                <div class="card glass-card search-card">
+
+
+                    <h3>
+
+                        <i class="fa-solid fa-filter"></i>
+
+                        Enter Farm Details
+
+                    </h3>
+
+
+                    <div class="filter-grid">
+
+
+                        <!-- SEASON -->
+
+                        <div class="filter-group">
+
+                            <label for="season">
+
+                                Season
+
+                            </label>
+
+
+                            <select id="season">
+
+                                <option value="" selected disabled>
+
+                                    Select season
+
+                                </option>
+
+
+                                <option value="Kharif">
+
+                                    Kharif
+
+                                </option>
+
+
+                                <option value="Rabi">
+
+                                    Rabi
+
+                                </option>
+
+
+                                <option value="Zaid">
+
+                                    Zaid
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- FARM AREA -->
+
+                        <div class="filter-group">
+
+                            <label for="area">
+
+                                Farm Area (Acres)
+
+                            </label>
+
+
+                            <input
+
+                                id="area"
+
+                                type="number"
+
+                                placeholder="e.g. 2.5"
+
+                                step="0.1"
+
+                                min="0"
+
+                            >
+
+                        </div>
+
+
+                        <!-- TEMPERATURE -->
+
+                        <div class="filter-group">
+
+                            <label for="temperature">
+
+                                Temperature (°C)
+
+                            </label>
+
+
+                            <input
+
+                                id="temperature"
+
+                                type="number"
+
+                                placeholder="e.g. 28"
+
+                                step="0.1"
+
+                            >
+
+                        </div>
+
+
+                        <!-- RAINFALL -->
+
+                        <div class="filter-group">
+
+                            <label for="rainfall">
+
+                                Rainfall (mm)
+
+                            </label>
+
+
+                            <input
+
+                                id="rainfall"
+
+                                type="number"
+
+                                placeholder="e.g. 450"
+
+                                step="0.1"
+
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="button-row">
+
+
+                        <button
+
+                            class="btn btn-green"
+
+                            onclick="getRecommendation()"
+
+                        >
+
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                            Recommend Crop
+
+                        </button>
+
+
+                        <button
+
+                            class="btn btn-clear"
+
+                            onclick="clearForm()"
+
+                        >
+
+                            <i class="fa-solid fa-rotate-left"></i>
+
+                            Clear
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div
+
+                        class="status"
+
+                        id="status"
+
+                    ></div>
+
+
+                </div>
+
+
+                <!-- ================= RESULT CARDS ================= -->
+
+                <div class="grid-two-col">
+
+
+                    <!-- BEST CROP -->
+
+                    <div class="card glass-card result-card">
+
+                        <h3>
+
+                            <i class="fa-solid fa-seedling"></i>
+
+                            Best Crop
+
+                        </h3>
+
+
+                        <div
+
+                            class="price-main"
+
+                        >
+
+                            <span
+
+                                class="price-value"
+
+                                id="bestCrop"
+
+                            >
+
+                                —
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+
+                                Recommendation
+
+                            </span>
+
+
+                            <strong>
+
+                                AI Based
+
+                            </strong>
+
+                        </div>
+
+
+                        <p
+
+                            class="result-description"
+
+                            id="cropDesc"
+
+                        >
+
+                            Recommendation will appear here after API response.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- ESTIMATED YIELD -->
+
+                    <div class="card glass-card result-card">
+
+                        <h3>
+
+                            <i class="fa-solid fa-chart-column"></i>
+
+                            Estimated Yield
+
+                        </h3>
+
+
+                        <div
+
+                            class="price-main"
+
+                        >
+
+                            <span
+
+                                class="price-value"
+
+                                id="estimatedYield"
+
+                            >
+
+                                —
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+
+                                Farm Area
+
+                            </span>
+
+
+                            <strong>
+
+                                Based on Input
+
+                            </strong>
+
+                        </div>
+
+
+                        <p class="result-description">
+
+                            Expected output based on current field conditions.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- PLANTING SEASON -->
+
+                <div class="card glass-card planting-card">
+
+
+                    <h3>
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        Planting Season
+
+                    </h3>
+
+
+                    <div
+
+                        class="price-main"
+
+                    >
+
+                        <span
+
+                            class="price-value"
+
+                            id="plantingSeason"
+
+                        >
+
+                            —
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>
+
+                            Recommendation
+
+                        </span>
+
+
+                        <strong>
+
+                            AI Based
+
+                        </strong>
+
+                    </div>
+
+
+                    <p class="result-description">
+
+                        Suggested sowing period for the recommended crop.
+
+                    </p>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
     </div>
-  </div>
 
-  <script>
-    const API_URL = "PASTE_YOUR_API_URL_HERE";
 
-    async function getRecommendation() {
-      const season = document.getElementById("season").value;
-      const area = document.getElementById("area").value;
-      const temperature = document.getElementById("temperature").value;
-      const rainfall = document.getElementById("rainfall").value;
-      const status = document.getElementById("status");
+    <!-- ================= JAVASCRIPT ================= -->
 
-      if (!season || !area || !temperature || !rainfall) {
-        status.textContent = "Please fill all fields before requesting a recommendation.";
-        return;
-      }
+    <script>
 
-      status.textContent = "Fetching recommendation...";
 
-      try {
-        const response = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            season,
-            area: Number(area),
-            temperature: Number(temperature),
-            rainfall: Number(rainfall)
-          })
-        });
+        const API_URL =
 
-        if (!response.ok) {
-          throw new Error("API request failed");
+            "http://127.0.0.1:5001/recommend-crop";
+
+
+        async function getRecommendation() {
+
+
+            const season =
+
+                document.getElementById("season").value;
+
+
+            const area =
+
+                document.getElementById("area").value;
+
+
+            const temperature =
+
+                document.getElementById("temperature").value;
+
+
+            const rainfall =
+
+                document.getElementById("rainfall").value;
+
+
+            const status =
+
+                document.getElementById("status");
+
+
+            if (
+
+                !season ||
+
+                !area ||
+
+                !temperature ||
+
+                !rainfall
+
+            ) {
+
+                status.textContent =
+
+                    "Please fill all fields before requesting a recommendation.";
+
+                return;
+
+            }
+
+
+            status.textContent =
+
+                "Fetching recommendation...";
+
+
+            try {
+
+
+                const response =
+
+                    await fetch(
+
+                        API_URL,
+
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                season: season,
+
+                                farm_area:
+
+                                    Number(area),
+
+                                temperature:
+
+                                    Number(temperature),
+
+                                rainfall:
+
+                                    Number(rainfall)
+
+                            })
+
+                        }
+
+                    );
+
+
+                const data =
+
+                    await response.json();
+
+
+                if (
+
+                    !response.ok ||
+
+                    !data.success
+
+                ) {
+
+                    throw new Error(
+
+                        data.error ||
+
+                        "API request failed"
+
+                    );
+
+                }
+
+
+                document.getElementById(
+
+                    "bestCrop"
+
+                ).textContent =
+
+                    data.crop ||
+
+                    "N/A";
+
+
+                document.getElementById(
+
+                    "estimatedYield"
+
+                ).textContent =
+
+                    data.estimated_total_yield
+
+                        ? data.estimated_total_yield +
+
+                          " units"
+
+                        : "N/A";
+
+
+                document.getElementById(
+
+                    "plantingSeason"
+
+                ).textContent =
+
+                    data.planting_season ||
+
+                    "N/A";
+
+
+                document.getElementById(
+
+                    "cropDesc"
+
+                ).textContent =
+
+                    "Recommended according to the entered season, temperature, rainfall, and farm area.";
+
+
+                status.textContent =
+
+                    "Recommendation loaded successfully.";
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.error(
+
+                    "Error:",
+
+                    error
+
+                );
+
+
+                status.textContent =
+
+                    "Failed to fetch recommendation. Make sure the Python API is running.";
+
+            }
+
         }
 
-        const data = await response.json();
 
-        document.getElementById("bestCrop").textContent = data.best_crop || "N/A";
-        document.getElementById("estimatedYield").textContent = data.estimated_yield || "N/A";
-        document.getElementById("plantingSeason").textContent = data.planting_season || "N/A";
-        document.getElementById("cropDesc").textContent =
-          data.description || "Your crop recommendation has been loaded successfully.";
+        function clearForm() {
 
-        status.textContent = "Recommendation loaded successfully.";
-      } catch (error) {
-        status.textContent = "Failed to fetch recommendation. Check API URL and response format.";
-        console.error(error);
-      }
-    }
 
-    function clearForm() {
-      document.getElementById("season").value = "";
-      document.getElementById("area").value = "";
-      document.getElementById("temperature").value = "";
-      document.getElementById("rainfall").value = "";
-      document.getElementById("bestCrop").textContent = "—";
-      document.getElementById("estimatedYield").textContent = "—";
-      document.getElementById("plantingSeason").textContent = "—";
-      document.getElementById("cropDesc").textContent = "Recommendation will appear here after API response.";
-      document.getElementById("status").textContent = "";
-    }
+            document.getElementById(
 
-    function goToPage1() {
-      window.location.href = "page1.html";
-    }
-  </script>
+                "season"
+
+            ).value = "";
+
+
+            document.getElementById(
+
+                "area"
+
+            ).value = "";
+
+
+            document.getElementById(
+
+                "temperature"
+
+            ).value = "";
+
+
+            document.getElementById(
+
+                "rainfall"
+
+            ).value = "";
+
+
+            document.getElementById(
+
+                "bestCrop"
+
+            ).textContent = "—";
+
+
+            document.getElementById(
+
+                "estimatedYield"
+
+            ).textContent = "—";
+
+
+            document.getElementById(
+
+                "plantingSeason"
+
+            ).textContent = "—";
+
+
+            document.getElementById(
+
+                "cropDesc"
+
+            ).textContent =
+
+                "Recommendation will appear here after API response.";
+
+
+            document.getElementById(
+
+                "status"
+
+            ).textContent = "";
+
+        }
+
+
+    </script>
+
 </body>
+
 </html>
