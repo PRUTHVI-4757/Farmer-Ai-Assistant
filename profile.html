@@ -69,9 +69,9 @@
 
 <script>
 
-const username = ********.getItem("username");
+const username = localStorage.getItem("username");
 
-fetch("http://0000.0.0.0:0000/profile/" + username)
+fetch("http://127.0.0.1:5000/******/" + username)
 .then(response => response.json())
 .then(data => {
 
